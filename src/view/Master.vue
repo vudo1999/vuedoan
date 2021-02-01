@@ -17,7 +17,7 @@ export default {
     beforeCreate() {
         const cartSaved = window.localStorage.getItem("cart");
         if (cartSaved) {
-        this.$store.commit(SET_CART, JSON.parse(cartSaved));
+            this.$store.commit(SET_CART, JSON.parse(cartSaved));
         }
     },
 }

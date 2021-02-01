@@ -29,8 +29,8 @@ const store = new Vuex.Store({
                 alert('San pham da ton tai trong gio hang');
             }else{
                 state.cartItem.push(item);
-                const vuancut = JSON.stringify(state.cartItem);
-                localStorage.setItem('cart', vuancut);
+                const vuea = JSON.stringify(state.cartItem);
+                localStorage.setItem('cart', vuea);
             }
         },
         [INCREMENT_QTY](){

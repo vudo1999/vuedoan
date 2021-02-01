@@ -2,47 +2,25 @@
   <div class="container">
     <div class="check">
       <h1>My Shopping Bag (2)</h1>
-      <div class="col-md-9 cart-items">
+      <div class="col-md-9 cart-items" v-for="item in GET_CART" :key="item.id">
         <div class="cart-header">
           <div class="close1"></div>
           <div class="cart-sec simpleCart_shelfItem">
             <div class="cart-item cyc">
-              <img src="images/pic1.jpg" class="img-responsive" alt="" />
+              <img :src="'http://127.0.0.1:8000/source/image/product/'+item.image" class="img-responsive" alt="" />
             </div>
+            <!-- <button @click="dataget(item)">getData</button> -->
             <div class="cart-item-info">
               <h3>
-                <a href="#">Mountain Hopper(XS R034)</a
-                ><span>Model No: 3578</span>
+                <a href="#">{{item.name}}</a
+                >
               </h3>
               <ul class="qty">
-                <li><p>Size : 5</p></li>
-                <li><p>Qty : 1</p></li>
+                  <li><button>-</button></li>
+                <li><input type="text" :value="item.qty"></li>
+                <li><button>+</button></li>
               </ul>
 
-              <div class="delivery">
-                <p>Service Charges : Rs.100.00</p>
-                <span>Delivered in 2-3 bussiness days</span>
-                <div class="clearfix"></div>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="cart-header2">
-          <div class="close2"></div>
-          <div class="cart-sec simpleCart_shelfItem">
-            <div class="cart-item cyc">
-              <img src="images/pic2.jpg" class="img-responsive" alt="" />
-            </div>
-            <div class="cart-item-info">
-              <h3>
-                <a href="#">Mountain Hopper(XS R034)</a
-                ><span>Model No: 3578</span>
-              </h3>
-              <ul class="qty">
-                <li><p>Size : 5</p></li>
-                <li><p>Qty : 1</p></li>
-              </ul>
               <div class="delivery">
                 <p>Service Charges : Rs.100.00</p>
                 <span>Delivered in 2-3 bussiness days</span>
@@ -87,7 +65,21 @@
 </template>
 
 <script>
-export default {};
+import {mapGetters} from 'vuex'
+import {GET_CART, CART_TOTAL} from '../constants/mutation-type'
+export default {
+    computed: {
+        ...mapGetters({
+            GET_CART,
+            CART_TOTAL
+        })
+    },
+    methods: {
+        dataget(item){
+            console.log(item);
+        }
+    }
+};
 </script>
 
 <style>

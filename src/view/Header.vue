@@ -22,13 +22,13 @@
             <div class="cart box_1">
               <a href="#">
                 <h3>
-                  <div class="total">
+                  <router-link to="cart" class="total">
                     <span class="simpleCart_total"></span> (<span
                       id="simpleCart_quantity"
                       class="simpleCart_quantity"
-                    >{{GET_CART}}</span>
-                  </div>
+                    >{{GET_CART.length}})</span>
                   <img src="../assets/images/cart.png" alt="" />
+                  </router-link>
                 </h3>
               </a>
             </div>
@@ -190,7 +190,15 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from 'vuex';
+import {GET_CART} from '../constants/mutation-type'
+export default {
+    computed:{
+        ...mapGetters([
+            GET_CART
+        ])
+    }
+};
 </script>
 
 <style>
